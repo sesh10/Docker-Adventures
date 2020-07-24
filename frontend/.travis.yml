@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t sesha10/frontend -f Dockerfile.dev .  # Enter sesha10/repo_name
+  
+script:
+  - docker run sesha10/frontend npm run test -- --coverage

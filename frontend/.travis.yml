@@ -7,3 +7,23 @@ before_install:
   
 script:
   - docker run sesha10/frontend npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk    # AWS / digitalocean
+  region: # Region where app is created 
+  app: # name of app
+  env: # name of env
+  bucket_name: # bucket name from AWS
+  bucket_path: # same as app name for first time
+  on:
+    branch: master
+  access_key_id: # $<aws access key>
+  secret_access_key:
+    secure: # "$<aws secret key>"
+
+
+
+# After completing user creation at AWS beanstalk
+# copy aws access key, aws secret key, password from aws and 
+# enter them in environment variable section in travis
+
